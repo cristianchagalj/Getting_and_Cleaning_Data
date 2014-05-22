@@ -1,1 +1,1 @@
-a
+The "tidy.data.txt" file has 180 rows (30 subject and 6 activities) and 68 columns (the first is the number of subject, the second is the activity, and the rest are means and standars desviation for each measurement).
