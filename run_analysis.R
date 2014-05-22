@@ -1,5 +1,5 @@
 #read columns names
-col.names<-read.table(file=c("UCI HAR Dataset\\features.txt"),header=FALSE,sep=" ")
+col.names<-read.table(file="UCI HAR Dataset\\features.txt",header=FALSE,sep=" ")
 
 #read the data
 df.test<-read.table(file="UCI HAR Dataset\\test\\X_test.txt",header=FALSE,col.names=col.names[,2])
