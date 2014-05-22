@@ -30,10 +30,6 @@ df.total <- df.total[order(df.total$subject, df.total$activity), ]
 
 row.names(df.total)<-NULL
 
-#calculate means and standars desviations
-means<-as.matrix(apply(df.total[,3:563],2,mean))
-sd<-as.matrix(apply(df.total[,3:563],2,sd))
-
 #calculate means by subject and activity
 df.averages.all<-aggregate(df.total[,3],by=list(df.total$subject,df.total$activity), mean)
 
@@ -52,6 +48,9 @@ df.averages.all[,2]<-factor(df.averages.all[,2],levels=c(1,2,3,4,5,6),labels=df.
 col.names.all<-rbind(matrix(c("Subject","Activity"),nrow=2),as.matrix(col.names[,2]))
 
 colnames(df.averages.all)<-col.names.all
+
+#clean the database and preserve only the mean and sd of each measurements 
+df.averages.all <- df.averages.all[,c(1,2,grep("-mean\\(\\)|-std\\(\\)", col.names[, 2])+2)]
 
 #create the .txt file
 write.table(df.averages.all, file = "tidy.data.txt", sep=" ", row.names = FALSE)
